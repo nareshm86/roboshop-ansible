@@ -1,0 +1,43 @@
+- name: configuring catalogue service
+  hosts: catalogue
+  become: yes
+  tasks:
+  - name: enabled node js 20
+    command: dnf module enable nodejs:20 -y
+  - name: install node js 20
+    package:
+      name: nodejs
+      state: present
+  - name: create roboshop user
+    user:
+     name: roboshop
+     system: true
+     home: /app
+     shell: /sbin/nologin
+     create_home: false
+     comment: "Roboshop System user"
+  - name: create app directory
+    file:
+      path: /app
+      state: absent
+  - name: create app directory
+    file:
+      path: /app
+      state: directory
+  - name: download catalogue service code
+    url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
+    dest: /tmp/catalogue.zip
+
+  - name: unzip catalogue file
+    unarchive:
+       src: /tmp/catalogue.zip
+       dest: /app
+
+  - name: install npm dependencies
+    community.general.npm:
+     path: /app
+     state: present
+
+
+    
+  
