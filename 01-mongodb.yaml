@@ -8,7 +8,7 @@
      dest: /etc/yum.repos.d/mongo.repo
   - name: install mangodb
     package:
-      name: mangodb-org
+      name: mongodb-org
       state: present
   - name: allowing remote connections
     replace:
