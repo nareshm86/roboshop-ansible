@@ -47,7 +47,7 @@
 
   - name: install dependencies
     command: mvn clean package
-      args:
+    args:
       chdir: /app
 
 - name: moving shipping jira file
