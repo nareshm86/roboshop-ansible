@@ -11,7 +11,7 @@
    state: present
   
   -name: creating systmem user
-   user:
+  user:
     name: roboshop
     comment: "roboshop system user"
     system: yes
