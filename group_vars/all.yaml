@@ -9,3 +9,4 @@ SHIPPING_HOST: shipping.nmarriaws.xyz
 MYSQL_HOST: mysql.nmarriaws.xyz
 USER_HOST: user.nmarriaws.xyz
 PAYMENT_HOST: payment.nmarriaws.xyz
+RABBITMQ_HOST: rabbitmq.nmarriaws.xyz
