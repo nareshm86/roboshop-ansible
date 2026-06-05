@@ -85,7 +85,7 @@
 
   - name: service restart
     service:
-    name: catalogue
-    state: restarted
+     name: catalogue
+     state: restarted
     
   
