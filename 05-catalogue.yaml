@@ -64,18 +64,14 @@
   - name: check catalogue schema exist ot not
     shell: mongosh --host "{{ MONGODB_HOST }}" --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
     register: catalogue_output
-    tags:
-    - mangodb
+   
   - name: print catalogue_output
     debug: 
       msg: "{{ catalogue_output }}"
-    tags:
-    - mangodb
+  
   - name: load products
     shell: mongosh --host "{{ MONGODB_HOST }}" </app/db/master-data.js
-    when: catalogue_output.stdout < 0
-    tags:
-    - mangodb
+    when: catalogue_output.stdout | int < 0
 
   - name: deamon reload
     systemd_service:
@@ -87,5 +83,6 @@
     service:
      name: catalogue
      state: restarted
+     enabled: yes
     
   
