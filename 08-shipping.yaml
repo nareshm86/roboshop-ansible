@@ -52,7 +52,7 @@
 
 - name: moving shipping jira file
   command: mv target/shipping-1.0.jar shipping.jar
-    args:
+  args:
     chdir: /app
 
 - name: copy shipping template
