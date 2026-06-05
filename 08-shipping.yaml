@@ -75,7 +75,7 @@
 
   - name: daemon reload
     systemd_service:
-    daemon_reload: yes
+      daemon_reload: yes
 
   - name: start and enable shipping service
     systemd:
