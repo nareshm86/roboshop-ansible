@@ -50,35 +50,35 @@
     args:
       chdir: /app
 
-- name: moving shipping jira file
-  command: mv target/shipping-1.0.jar shipping.jar
-  args:
+  - name: moving shipping jira file
+    command: mv target/shipping-1.0.jar shipping.jar
+    args:
     chdir: /app
 
-- name: copy shipping template
-  template:
-    src: shipping.service.j2
-    dest: /etc/systemd/system/shipping.service
+  - name: copy shipping template
+    template:
+      src: shipping.service.j2
+      dest: /etc/systemd/system/shipping.service
 
-- name: loading schemas in mysql DB
-  community.mysql.mysql_db:
-     name: all
-     state: import
-     target: "{{ item }}"
-     login_host: "{{ MYSQL_HOST }}"
-     login_user: root
-     login_password: "{{ mysql_root_password }}"
-     loop:
-     - /app/db/schema.sql
-     - /app/db/app-user.sql
-     - /app/db/master-data.sql
+  - name: loading schemas in mysql DB
+    community.mysql.mysql_db:
+      name: all
+      state: import
+      target: "{{ item }}"
+      login_host: "{{ MYSQL_HOST }}"
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      loop:
+      - /app/db/schema.sql
+      - /app/db/app-user.sql
+      - /app/db/master-data.sql
 
-- name: daemon reload
-  systemd_service:
-  daemon_reload: yes
+  - name: daemon reload
+    systemd_service:
+    daemon_reload: yes
 
-- name: start and enable shipping service
-  systemd:
-    name: shipping
-    enabled: yes
-    state: restarted
+  - name: start and enable shipping service
+    systemd:
+      name: shipping
+      enabled: yes
+      state: restarted
