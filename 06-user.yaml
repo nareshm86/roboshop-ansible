@@ -2,69 +2,69 @@
   hosts: user
   become: yes
   tasks:
-  -name: enable node js 20 version
-  command: dnf module enable nodejs:20 -y
+  - name: enable node js 20 version
+    command: dnf module enable nodejs:20 -y
   
-  -name: install node js
-  package:
-   name: nodejs
-   state: present
+  - name: install node js
+    package:
+     name: nodejs
+     state: present
   
-  -name: creating systmem user
-  user:
-    name: roboshop
-    comment: "roboshop system user"
-    system: yes
-    shell: /sbin/nologin
-    create_home: /app
-    state: present
+  - name: creating systmem user
+    user:
+     name: roboshop
+     comment: "roboshop system user"
+     system: yes
+     shell: /sbin/nologin
+     create_home: /app
+     state: present
   
-  -name: deleting /app directory
-  file:
-    path: /app
-    state: absent
+  - name: deleting /app directory
+    file:
+     path: /app
+     state: absent
 
-  -name: deleting  user zip file from tmp directory
-  file:
-    path: /tmp/user.zip
-    state: absent
+  - name: deleting  user zip file from tmp directory
+    file:
+     path: /tmp/user.zip
+     state: absent
   
-  -name: creating /app directory
-  file:
-   path: /app
-   state: directory
+  - name: creating /app directory
+    file:
+     path: /app
+     state: directory
 
-  -name: downloanding user code
-  get_url:
-   url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
-   dest: /tmp/user.zip
+  - name: downloanding user code
+    get_url:
+     url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
+     dest: /tmp/user.zip
 
-  -name: unzipping user file
-  unarchive:
-    src: /tmp/user.zip
-    dest: /app
-    remote_src: yes 
+  - name: unzipping user file
+    unarchive:
+     src: /tmp/user.zip
+     dest: /app
+     remote_src: yes 
 
-  -name: install npm dependencies
-  community.general.npm:
-   path: /app
-   state: present
+  - name: install npm dependencies
+    community.general.npm:
+     path: /app
+     state: present
   
-  -name: copying SystemD User Service file
-  template:
-   src: user.service.j2
-   dest: /etc/systemd/system/user.service
+  - name: copying SystemD User Service file
+    template:
+     src: user.service.j2
+     dest: /etc/systemd/system/user.service
 
-  -name: daemon reload
-  systemd_service:
-   name: user
-   daemon_reload: true
+  - name: daemon reload
+    systemd_service:
+     name: user
+     daemon_reload: true
 
-  -name: restart and enable user service
-  service:
-   name: user
-   state: restarted
-   enabled: yes
+  - name: restart and enable user service
+    service:
+     name: user
+     state: restarted
+     enabled: yes
 
 
      
