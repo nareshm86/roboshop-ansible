@@ -48,12 +48,12 @@
   - name: install dependencies
     command: mvn clean package
     args:
-    chdir: /app
+      chdir: /app
 
   - name: moving shipping jira file
     command: mv target/shipping-1.0.jar shipping.jar
     args:
-    chdir: /app
+      chdir: /app
 
   - name: copy shipping template
     template:
