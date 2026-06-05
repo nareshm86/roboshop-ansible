@@ -47,7 +47,7 @@
   
   - name: install npm dependencies
     community.general.npm:
-    path: /app
+     path: /app
 
   - name: copy user template file
     template:
