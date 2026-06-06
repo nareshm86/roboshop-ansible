@@ -23,9 +23,9 @@
       path: /app
       state: absent
 
-  - name: remove /tmp directory
+  - name: delete cart.zip from tmp directory
     file:
-      path: /tmp
+      path: /tmp/cart.zip
       state: absent
 
   - name: create /app directory
