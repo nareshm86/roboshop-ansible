@@ -57,13 +57,15 @@
     template:
       src: payment.service.j2
       dest: /etc/systemd/system/payment.service
+    tags: paymentsrv
+
   
   - name: daemon reload
     systemd_service:
       name: payment
       daemon_reload: yes
 
-  - name: start and enable shipping service
+  - name: start and enable payment service
     service:
       name: payment
       enabled: yes
