@@ -28,7 +28,7 @@
   - name: download frondend code
     get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip
-      path: /tmp/frontend.zip
+      dest: /tmp/frontend.zip
 
   - name: extract zip file
     unarchive:
@@ -49,5 +49,5 @@
   - name: enable and start frontend
     service:
       name: nginx
-      state: restarted
+      state: started
       enabled: yes
