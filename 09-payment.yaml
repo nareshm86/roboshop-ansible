@@ -63,10 +63,11 @@
   - name: daemon reload
     systemd_service:
       name: payment
-      daemon_reload: yes
+      daemon_reload: true
 
   - name: start and enable payment service
     service:
       name: payment
       enabled: yes
-      state: restarted  
+      state: restarted
+    tags: paymentst
