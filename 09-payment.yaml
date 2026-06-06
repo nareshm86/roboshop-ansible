@@ -69,5 +69,5 @@
     service:
       name: payment
       enabled: yes
-      state: restarted
+      state: started
     tags: paymentst
