@@ -67,6 +67,5 @@
   - name: start and enable payment service
     service:
       name: payment
-      enabled: yes
-      state: started
+      state: restarted
     tags: paymentst
