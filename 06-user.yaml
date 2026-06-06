@@ -12,12 +12,12 @@
   
   - name: creating systmem user
     user:
-     name: roboshop
-     system: true
-     shell: /sbin/nologin
-     home: /app
-     comment: "roboshop system user"
-     tags: roboshopuser
+      name: roboshop
+      system: true
+      shell: /sbin/nologin
+      home: /app
+      comment: "roboshop system user"
+    tags: roboshopuser
   
   - name: deleting /app directory
     file:
