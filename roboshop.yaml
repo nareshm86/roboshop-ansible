@@ -83,3 +83,6 @@
       wait: false
     loop: "{{ instances  }}"  
     when: action == "delete"
+  
+  # for create: ansible-playbook -e "instances=['mangodb']" roboshop.yaml
+  # for delete: ansible-playbook -e "action=delete" -e "instances=['mongodb']" roboshop.yaml
