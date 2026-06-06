@@ -19,13 +19,13 @@
       state: started
       enabled: yes
 
-  - name: Creating Roboshop user
+  - name: create roboshop mq user
     community.rabbitmq.rabbitmq_user:
-        user: roboshop
-        password: roboshop123
-        permissions:
-          -vhost: /
-          configure_priv: .*
-          write_priv: .*
-          read_priv: .*
-        state: present
+    user: roboshop
+    password: roboshop123
+    state: present
+    permissions:
+      - vhost: /
+        configure_priv: .*
+        write_priv: .*
+        read_priv: .*
