@@ -33,7 +33,7 @@
     file:
       path: /app
       state: directory
-    -tags: appdir
+    tags: appdir
 
   - name: downloanding user code
     get_url:
