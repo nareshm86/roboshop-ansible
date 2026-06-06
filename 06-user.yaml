@@ -31,8 +31,9 @@
   
   - name: creating /app directory
     file:
-     path: /app
-     state: directory
+      path: /app
+      state: directory
+    -tags: appdir
 
   - name: downloanding user code
     get_url:
