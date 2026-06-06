@@ -76,9 +76,10 @@
 
   - name: deamon reload
     systemd_service:
-     name: catalogue
-     daemon_reload: true
-     when: unit_file_status.changed
+      name: catalogue
+      daemon_reload: true
+    when: unit_file_status.changed
+    tags: dreload
 
   - name: service restart
     service:
