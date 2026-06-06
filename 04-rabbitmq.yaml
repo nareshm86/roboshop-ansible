@@ -21,11 +21,11 @@
 
   - name: Creating Roboshop user
     community.rabbitmq.rabbitmq_user:
-        user: "roboshop"
-        password: "roboshop123"
+        user: roboshop
+        password: roboshop123
         permissions:
-        vhost: "/"
-        configure_priv: ".*"
-        write_priv: ".*"
-        read_priv: ".*"
-        state: present
+          -vhost: "/"
+          configure_priv: ".*"
+          write_priv: ".*"
+          read_priv: ".*"
+          state: present
