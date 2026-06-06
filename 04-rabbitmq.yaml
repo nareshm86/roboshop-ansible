@@ -21,11 +21,11 @@
 
   - name: create roboshop mq user
     community.rabbitmq.rabbitmq_user:
-    user: roboshop
-    password: roboshop123
-    state: present
-    permissions:
-      - vhost: /
-        configure_priv: .*
-        write_priv: .*
-        read_priv: .*
+      user: roboshop
+      password: roboshop123
+      state: present
+      permissions:
+        - vhost: /
+          configure_priv: .*
+          write_priv: .*
+          read_priv: .*
