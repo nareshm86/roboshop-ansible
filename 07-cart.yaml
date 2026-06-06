@@ -13,10 +13,9 @@
   - name: create roboshop system user
     user:
       name: roboshop
-      system: yes
+      system: true
       shell: /sbin/nologin
-      create_home: /app
-      state: present
+      home: /app
       comment: "roboshop system user"
 
   - name: remove /app directory
